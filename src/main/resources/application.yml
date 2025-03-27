@@ -1,0 +1,84 @@
+server:
+  port: 8200
+baseUrl: http://127.0.0.1:8200
+
+logging:
+  level:
+    root: INFO
+    leapro:
+      io:
+        convagent: DEBUG
+    org:
+      springframework:
+        ai: TRACE
+        web:
+          servlet:
+            mvc:
+              method:
+                annotation: TRACE
+    reactor.netty.http.client: TRACE
+    org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
+    org.springframework.http.client: TRACE
+    com:
+      azure:
+        core:
+          http:
+            rest:
+              RestProxy: DEBUG
+              SyncRestProxy: DEBUG
+            netty: DEBUG
+          util:
+            logging:
+              ClientLogger: DEBUG
+
+    reactor:
+      netty:
+        http:
+          client: TRACE
+
+spring:
+  ai:
+    model:
+      embedding: azure-openai
+    azure:
+      openai:
+        endpoint: https://lgtemplatefiller-eus-oepnai-01.openai.azure.com
+        api-key:
+        chat:
+          options:
+            #deployment-name: gpt-35-turbo
+            deployment-name: gpt-4o
+            #api-version: 2025-01-01-preview
+            api-version: 2023-05-15
+        embedding:
+          metadata-mode: EMBED
+          #deployment-name: text-embedding-ada-002  # Must match Azure exactly
+          options:
+            deployment-name: text-embedding-3-large
+            api-version: 2023-05-15
+            #api-version: 2023-05-15  # Match your working curl version
+    vectorstore:
+      #      azure:
+      #        url: https://serach-service-centalus-01.search.windows.net
+      #        api-key:
+      #        index-name: files-to-inlcude
+      #        default-top-k: 4
+      #        default-similarity-threshold: 0.0
+      #        embedding-property: embedding
+      azure:
+        #        initialize-schema: true
+        url: https://convagent2-serach-service-centralus.search.windows.net
+        api-key:
+        index-name: vector-1742952777037-test10
+        default-top-k: 4
+        default-similarity-threshold: 0.0
+        #        embedding-property: text_vector
+        #        filter-metadata-fields:
+        #          - chunk_id
+        #          - parent_id
+        #          - chunk
+        #          - title
+        initialize-schema: true
+
+#  main:
+#    allow-bean-definition-overriding: true
