@@ -42,8 +42,8 @@ spring:
       embedding: azure-openai
     azure:
       openai:
-        endpoint: https://lgtemplatefiller-eus-oepnai-01.openai.azure.com
-        api-key:
+        endpoint: '${AZURE_OPENAI_ENDPOINT}'
+        api-key: '${AZURE_OPENAI_API_KEY}'
         chat:
           options:
             #deployment-name: gpt-35-turbo
@@ -58,18 +58,11 @@ spring:
             api-version: 2023-05-15
             #api-version: 2023-05-15  # Match your working curl version
     vectorstore:
-      #      azure:
-      #        url: https://serach-service-centalus-01.search.windows.net
-      #        api-key:
-      #        index-name: files-to-inlcude
-      #        default-top-k: 4
-      #        default-similarity-threshold: 0.0
-      #        embedding-property: embedding
       azure:
         #        initialize-schema: true
-        url: https://convagent2-serach-service-centralus.search.windows.net
-        api-key:
-        index-name: vector-1742952777037-test10
+        url: '${AZURE_AI_SEARCH_ENDPOINT}'
+        api-key: '${AZURE_AI_SEARCH_API_KEY}'
+        index-name: '${AZURE_AI_SEARCH_INDEX_NAME}'
         default-top-k: 4
         default-similarity-threshold: 0.0
         #        embedding-property: text_vector
